@@ -65,6 +65,7 @@ RUN set -eux; \
 	composer install --prefer-dist --no-dev --no-autoloader --no-scripts --no-progress; \
 	composer clear-cache
 
+
 # copy sources
 COPY --link . .
 RUN rm -Rf docker/
@@ -75,7 +76,6 @@ RUN set -eux; \
 	composer dump-env prod; \
 	composer run-script --no-dev post-install-cmd; \
 	chmod +x bin/console; sync
-
 # Dev image
 FROM app_php AS app_php_dev
 
